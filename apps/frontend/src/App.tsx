@@ -119,7 +119,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>NoMoSlido</h1>
+        <h1>SimplePollo</h1>
       </header>
       <main>
         {view === 'create' && !createdPollId ? (

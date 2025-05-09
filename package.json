@@ -1,12 +1,12 @@
 {
-  "name": "poll-app",
+  "name": "simplepollo",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
     "apps/frontend",
     "apps/backend"
   ],
-  "description": "A polling application with frontend and backend",
+  "description": "A modern polling application with frontend and backend",
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
     "dev:backend": "cd apps/backend && npm start",

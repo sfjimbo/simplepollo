@@ -1,4 +1,4 @@
-# NoMoSlido
+# SimplePollo
 
 A modern polling application built with React, TypeScript, Express, and Node.js.
 
@@ -42,8 +42,8 @@ This monorepo contains both frontend and backend code:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/nomoslido.git
-   cd nomoslido
+   git clone https://github.com/yourusername/simplepollo.git
+   cd simplepollo
    ```
 
 2. Install dependencies:

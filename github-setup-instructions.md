@@ -1,11 +1,11 @@
-# GitHub Setup Instructions for NoMoSlido
+# GitHub Setup Instructions for SimplePollo
 
-Follow these steps to push your NoMoSlido project to GitHub:
+Follow these steps to push your SimplePollo project to GitHub:
 
 ## Step 1: Create a GitHub Repository
 
 1. Go to https://github.com/new
-2. Enter a repository name (e.g., "nomoslido")
+2. Enter a repository name (e.g., "simplepollo")
 3. Add a description (optional)
 4. Choose if you want it to be public or private
 5. Do NOT initialize with a README, .gitignore, or license (since we've already created these files)

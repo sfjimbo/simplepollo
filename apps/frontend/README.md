@@ -1,4 +1,4 @@
-# NoMoSlido Frontend
+# SimplePollo Frontend
 
 A modern polling application frontend built with React, TypeScript, and Vite.
 

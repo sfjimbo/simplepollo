@@ -1,0 +1,241 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.poll-creator {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.poll-creator form {
+  width: 100%;
+}
+
+.poll-creator h2 {
+  margin: 0 0 1.5rem;
+  color: #222;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.add-option,
+.submit-button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background: #fff;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.option-input input {
+  background: #fff;
+}
+
+.option-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background: #f6f7fb;
+  border-radius: 6px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.option-input input {
+  flex: 1;
+  min-width: 0;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.5rem 0.2rem;
+}
+
+.option-input input:focus {
+  background: #fff;
+}
+
+select.votes-select {
+  width: auto;
+  min-width: 2.5em;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.remove-option {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  background: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.remove-option:hover {
+  background: #ff0000;
+}
+
+.add-option-row {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem 0;
+  width: 100%;
+  padding-left: 0;
+}
+
+.add-option-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #333;
+  padding: 0;
+}
+
+.add-option-icon:hover {
+  opacity: 0.8;
+}
+
+.add-option-icon svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.add-option {
+  display: none;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.error {
+  color: #ff4444;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #fff0f0;
+  border-radius: 4px;
+  border: 1px solid #ffdddd;
+  font-size: 1rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.submit-button:hover {
+  background: #357abd;
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.votes-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.votes-row select {
+  flex: 1;
+}
+
+.shuffle-btn {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.shuffle-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.randomize-label {
+  display: none;
+}
+
+.drag-handle, [data-rbd-droppable-id] {
+  display: none;
+} 

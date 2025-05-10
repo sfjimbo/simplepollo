@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import type { DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import type { DropResult, DroppableProvided, DraggableProvided } from '@hello-pangea/dnd';
 import config from '../config';
 import './PollCreator.css';
 
@@ -17,6 +17,13 @@ const AddIcon = () => (
     <circle cx="12" cy="12" r="11" stroke="black" strokeWidth="2"/>
     <path d="M12 6L12 18" stroke="black" strokeWidth="2"/>
     <path d="M6 12L18 12" stroke="black" strokeWidth="2"/>
+  </svg>
+);
+
+// Drag handle icon
+const DragHandleIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M7 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
   </svg>
 );
 
@@ -75,6 +82,16 @@ export function PollCreator({ onPollCreated }: PollCreatorProps) {
     const newOptions = [...options];
     newOptions[index].text = value;
     setOptions(newOptions);
+  };
+
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
+    
+    const reorderedOptions = [...options];
+    const [reorderedItem] = reorderedOptions.splice(result.source.index, 1);
+    reorderedOptions.splice(result.destination.index, 0, reorderedItem);
+    
+    setOptions(reorderedOptions);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -137,28 +154,50 @@ export function PollCreator({ onPollCreated }: PollCreatorProps) {
 
         <div className="form-group">
           <label>Options</label>
-          <div className="options-container">
-            {options.map((option, index) => (
-              <div key={option.id} className="option-input">
-                <input
-                  type="text"
-                  value={option.text}
-                  onChange={(e) => updateOption(index, e.target.value)}
-                  placeholder={`Option ${index + 1}`}
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => removeOption(index)}
-                  className="remove-option"
-                  style={{ visibility: options.length > 2 ? 'visible' : 'hidden' }}
-                  aria-label="Remove option"
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId="options">
+              {(provided: DroppableProvided) => (
+                <div 
+                  className="options-container" 
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
                 >
-                  <RemoveIcon />
-                </button>
-              </div>
-            ))}
-          </div>
+                  {options.map((option, index) => (
+                    <Draggable key={option.id} draggableId={option.id} index={index}>
+                      {(provided: DraggableProvided) => (
+                        <div 
+                          className="option-input draggable-option"
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                        >
+                          <div className="drag-handle" {...provided.dragHandleProps}>
+                            <DragHandleIcon />
+                          </div>
+                          <input
+                            type="text"
+                            value={option.text}
+                            onChange={(e) => updateOption(index, e.target.value)}
+                            placeholder={`Option ${index + 1}`}
+                            required
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeOption(index)}
+                            className="remove-option"
+                            style={{ visibility: options.length > 2 ? 'visible' : 'hidden' }}
+                            aria-label="Remove option"
+                          >
+                            <RemoveIcon />
+                          </button>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
           <div className="add-option-row">
             <button 
               type="button" 

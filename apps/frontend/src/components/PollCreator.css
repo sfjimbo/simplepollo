@@ -236,6 +236,33 @@ select.votes-select {
   display: none;
 }
 
-.drag-handle, [data-rbd-droppable-id] {
-  display: none;
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  cursor: grab;
+  width: 24px;
+  height: 24px;
+  margin-right: 2px;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.draggable-option {
+  transition: background-color 0.2s;
+}
+
+/* Style when dragging */
+.draggable-option[data-rbd-dragging-state="dragging"] {
+  background: #e8f0fe;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Droppable area */
+.options-container {
+  width: 100%;
+  min-height: 50px;
 } 

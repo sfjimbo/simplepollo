@@ -120,7 +120,14 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>SimplePollo</h1>
+        <div className="logo-container">
+          <img 
+            src="/images/simplepollo-logo.png" 
+            alt="SimplePollo" 
+            className="logo-image" 
+          />
+          <div className="logo-byline">By Jim Morris</div>
+        </div>
       </header>
       <main>
         {view === 'create' && !createdPollId ? (

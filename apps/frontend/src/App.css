@@ -58,12 +58,46 @@ header {
   width: 100%;
   background: #4a90e2;
   color: #fff;
-  padding: 1.5rem;
+  padding: 0;
   box-shadow: 0 2px 8px rgba(74,144,226,0.08);
   font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: 1px;
-  text-align: left;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.logo-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+.logo-byline {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  height: 20px;
+  line-height: 20px;
 }
 
 main {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { PollCreator } from './components/PollCreator'
 import { PollVoter } from './components/PollVoter'
+import config from './config'
 import './App.css'
 
 interface PollResults {
@@ -63,7 +64,7 @@ function App() {
     setLoadingResults(true)
     try {
       console.log('Refreshing results...')  // Debug log
-      const response = await fetch(`http://localhost:4000/poll/${id}/results`)
+      const response = await fetch(`${config.apiUrl}/poll/${id}/results`)
       
       if (!response.ok) {
         console.error('Failed to load results')

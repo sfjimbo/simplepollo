@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import config from '../config';
 import './PollVoter.css';
 
 interface PollOption {
@@ -46,7 +47,7 @@ export function PollVoter({ pollId }: PollVoterProps) {
     async function fetchPoll() {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:4000/poll/${pollId}`);
+        const response = await fetch(`${config.apiUrl}/poll/${pollId}`);
         
         if (!response.ok) {
           throw new Error('Failed to load poll');
@@ -69,7 +70,7 @@ export function PollVoter({ pollId }: PollVoterProps) {
     if (!poll || !poll.showResultsToVoters) return;
     
     try {
-      const response = await fetch(`http://localhost:4000/poll/${pollId}/results`);
+      const response = await fetch(`${config.apiUrl}/poll/${pollId}/results`);
       
       if (!response.ok) {
         throw new Error('Failed to load results');
@@ -109,7 +110,7 @@ export function PollVoter({ pollId }: PollVoterProps) {
     setError(null);
     
     try {
-      const response = await fetch(`http://localhost:4000/poll/${pollId}/vote`, {
+      const response = await fetch(`${config.apiUrl}/poll/${pollId}/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

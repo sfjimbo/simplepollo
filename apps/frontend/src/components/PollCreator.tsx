@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import type { DropResult, DroppableProvided, DraggableProvided } from 'react-beautiful-dnd';
+import config from '../config';
 import './PollCreator.css';
 
 // Icons for better visual appearance
@@ -89,7 +92,7 @@ export function PollCreator({ onPollCreated }: PollCreatorProps) {
     }
     
     try {
-      const response = await fetch('http://localhost:4000/poll', {
+      const response = await fetch(`${config.apiUrl}/poll`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ export function PollVoter({ pollId }: PollVoterProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const [voterId, setVoterId] = useState<string>(`user-${Math.random().toString(36).slice(2, 10)}`);
+  const [voterId] = useState<string>(`user-${Math.random().toString(36).slice(2, 10)}`);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [results, setResults] = useState<PollResults | null>(null);
   const [voted, setVoted] = useState(false);

@@ -6,7 +6,14 @@ const app = express();
 const router = Router();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174', // In case the port changes
+    process.env.FRONTEND_URL || '*' // Allow from the frontend URL in production
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use(router);
 
@@ -118,6 +125,11 @@ router.get('/poll/:id/results', (req: Request<{ id: string }>, res: Response) =>
     linkClicks: poll.linkClicks,
     voters: Object.keys(poll.votes).length,
   });
+});
+
+// Add a health check endpoint for Railway
+router.get('/health', (req: Request, res: Response) => {
+  return res.status(200).json({ status: 'ok' });
 });
 
 app.listen(PORT, () => {

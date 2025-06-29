@@ -119,14 +119,10 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <div className="logo-container">
-          <img 
-            src="/images/simplepollo-logo.png" 
-            alt="SimplePollo" 
-            className="logo-image" 
-          />
-          <div className="logo-byline">By Jim Morris</div>
+      <header className="main-header">
+        <div className="header-content">
+          <span className="main-title">Simple Pollo</span>
+          <span className="subtitle">by Jim Morris</span>
         </div>
       </header>
       <main>
@@ -158,14 +154,14 @@ function App() {
             </button>
             
             <div className="admin-results">
-              <div className="admin-header">
-                <h3>Poll Results</h3>
-                <span className="admin-badge">Admin View</span>
-              </div>
               {loadingResults ? (
                 <div className="loading">Loading results...</div>
               ) : results ? (
                 <div className="results-container">
+                  <div className="admin-header">
+                    <h3>Poll Results</h3>
+                    <span className="admin-badge">Admin View</span>
+                  </div>
                   <div className="total-votes">
                     <span className="votes-count">{results.totalVotes} total votes</span>
                     <span className="voter-count">from {results.voters || 0} {results.voters === 1 ? 'person' : 'people'}</span>
@@ -199,13 +195,13 @@ function App() {
                         </div>
                       ))}
                   </div>
+                  <div className="last-updated">
+                    {lastUpdated && `Last updated: ${formatLastUpdated()}`}
+                  </div>
                 </div>
               ) : (
                 <div className="no-votes">No votes yet. Results will appear here as people vote.</div>
               )}
-              <div className="last-updated">
-                {lastUpdated && `Last updated: ${formatLastUpdated()}`}
-              </div>
             </div>
           </div>
         )}
